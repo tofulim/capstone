@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="http://www.youtube.com/player_api"></script>
+  <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  <title>main</title>
+</head>
+
+<script type='text/javascript'>
+  Kakao.init('e965922752dd0e459d202be15719070e');
+  var kakao = function() {
+    Kakao.API.request({
+    url: '/v1/user/me',
+    success: function(res) {
+      //alert(JSON.stringify(res));
+      name = res.properties.nickname;
+      //document.writeln(name, "님 안녕하세요.");
+      return name;
+    },
+    fail: function(error) {
+      alert(JSON.stringify(error));
+    }
+  });
+}
+</script>
+
+<body>
+  <script src="youtubeplayer.js"></script>
+  <div>"님 안녕하세요</div> <!-- 이게 안돼네 -->
+  </div>
+  <div class="parent">
+   <div class="_4cover">
+    <div class="Playlist" style="background-color: white"><h1>여기는 플레이리스트</h1></div>
+    <div class="SNS" style="background-color: yellow"><h1>여기는 SNS</h1></div>
+    <div class="Ranking"  style="background-color: green"><h1>여기는 친구들 랭킹</h1></div>
+  </div>
+    <div class="MusicPlayer" style="background-color: black">
+      <button id="ppBtn" type="button" border="0px" background-color="white" onclick="onclickPP()"><img id="btn-img" src="play.png"></button>
+      <input id="changeBtn" type="text"></input>
+      <button id="changConfirmBtn" type="button" onclick="onclickConfirmId()">confirm</button>
+      <div id="player">
+        <iframe width="33" height="33" src="https://www.youtube.com/embed/pQV0WEdT_OE" controls="2" frameborder="0" rel="0" fs="0" controls=0 disablekb="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
