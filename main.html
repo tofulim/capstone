@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="http://www.youtube.com/player_api"></script>
-  <link rel="stylesheet" type="text/css" href="login.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="search.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
   <title>main</title>
 </head>
 
@@ -15,7 +15,7 @@
   Kakao.init('e965922752dd0e459d202be15719070e');
   var kakao = function() {
     Kakao.API.request({
-    url: '/v1/user/me',
+    url: '/v2/user/me',
     success: function(res) {
       //alert(JSON.stringify(res));
       name = res.properties.nickname;
@@ -31,14 +31,19 @@
 
 <body>
   <script src="youtubeplayer.js"></script>
-  <div>"님 안녕하세요</div> <!-- 이게 안돼네 -->
   </div>
   <div class="parent">
-   <div class="_4cover">
-    <div class="Playlist" style="background-color: white"><h1>여기는 플레이리스트</h1></div>
-    <div class="SNS" style="background-color: yellow"><h1>여기는 SNS</h1></div>
-    <div class="Ranking"  style="background-color: green"><h1>여기는 친구들 랭킹</h1></div>
-  </div>
+    <div class="searchBar"> <!--검색버튼과 입력창-->
+      <input id="inputText" type="text"></input>
+      <button id=searchBtn type="button" onclick="onclickSearch()">검색</button>
+    </div>
+    <div class="_3cover">
+      <div class="Playlist" style="background-color: white"><h1>여기는 플레이리스트</h1></div>
+      <div id="searchResultPage"> <!--검색버튼 클릭 시 2,3번을 검색 결과로 전환해주는 div-->
+        <div class="SNS" style="background-color: yellow"><h1>여기는 SNS</h1></div>
+        <div class="Ranking"  style="background-color: green"><h1>여기는 친구들 랭킹</h1></div>
+      </div>
+    </div>
     <div class="MusicPlayer" style="background-color: black">
       <button id="ppBtn" type="button" border="0px" background-color="white" onclick="onclickPP()"><img id="btn-img" src="play.png"></button>
       <input id="changeBtn" type="text"></input>
