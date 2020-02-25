@@ -11,11 +11,13 @@ function onYouTubeIframeAPIReady() {
 }
 function onclickPP() {
   if(a==0) {player.pauseVideo();
-    document.getElementById("btn-img").src="play.png"; a=1;}
+    document.getElementById("btn-img").src="img/play.png"; a=1;}
   else {player.playVideo();
-    document.getElementById("btn-img").src="pause.png"; a=0;}
+    document.getElementById("btn-img").src="img/pause.png"; a=0;}
 }
 function onclickConfirmId(){
     var input = document.getElementById("changeBtn").value;
       player.loadVideoById(input);
+
+
 }

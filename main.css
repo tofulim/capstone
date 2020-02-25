@@ -17,10 +17,10 @@ html, body {
 }
 #searchResultPage{
   display:flex;
-  flex:auto;
+  flex:3;
 }
 .SNS {
-  flex:1.5;
+  flex:2;
 }
 .Ranking {
   flex:1;

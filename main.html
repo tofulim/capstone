@@ -6,13 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="http://www.youtube.com/player_api"></script>
-  <script src="search.js"></script>
-  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="js/search.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <title>main</title>
 </head>
 
 <script type='text/javascript'>
-  Kakao.init('e965922752dd0e459d202be15719070e');
   var kakao = function() {
     Kakao.API.request({
     url: '/v2/user/me',
@@ -30,7 +29,7 @@
 </script>
 
 <body>
-  <script src="youtubeplayer.js"></script>
+  <script src="js/youtubeplayer.js"></script>
   </div>
   <div class="parent">
     <div class="searchBar"> <!--검색버튼과 입력창-->
@@ -45,7 +44,7 @@
       </div>
     </div>
     <div class="MusicPlayer" style="background-color: black">
-      <button id="ppBtn" type="button" border="0px" background-color="white" onclick="onclickPP()"><img id="btn-img" src="play.png"></button>
+      <button id="ppBtn" type="button" border="0px" background-color="white" onclick="onclickPP()"><img id="btn-img" src="img/play.png"></button>
       <input id="changeBtn" type="text"></input>
       <button id="changConfirmBtn" type="button" onclick="onclickConfirmId()">confirm</button>
       <div id="player">
