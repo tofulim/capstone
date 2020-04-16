@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="/javascripts/updatePage.js"></script>
+  <title>
+    <%=user.nickname %>의 페이지
+  </title>
+</head>
+<body>
+  <div class="SNS">
+    <% for(var i=0; i<boards.length; i++){ %>
+      <div>
+        <span style="background-color: white; font-size:16px; border:1px solid black; float: left; display: inline-block;">
+          <span>
+            <img src="<%= boards[i].img %>" width="320" height="250" />
+            <br>
+            <%= boards[i].text %>
+            <br>
+            <br>
+            <form action="/users/delete/<%= boards[i].id %>?_method=DELETE" method="post" onsubmit="return confirm('이 게시물을 삭제하시겠습니까?' );">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input type="submit" name="delete" value="게시물 삭제" />
+            </form>
+            <button type="button" onclick="window.open('users/update/<%= boards[i].id %>', 'window', 'width=500, height=300, top=80, left=550')">게시물 수정</button>
+            <br>
+          </span>
+          <br>
+        </span>
+      </div>
+      <% } %>
+    </div>
+  </body>
+  </html>
