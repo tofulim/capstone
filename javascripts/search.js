@@ -54,7 +54,14 @@ function onclickSearch(){ //검색창에 입력한 값으로 2,3번에 새 html�
       var xhr = new XMLHttpRequest();
       xhr.open("POST" , "/moodsearch" , true);
       xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-      xhr.send(`input=${input}`);
+      xhr.send(`input=${input}`); //서버로 전달
+
+
+      // if(history.state.data="search"){ //뒤로가기 눌렸을 때 // 구현하고 나서 이거 해줘야함
+      //   onpopstate = function(event) {
+      //   reloadMain(); //메인의 2,3번 새로고침 해줌
+      //  }
+      // }
     }
   }
 }

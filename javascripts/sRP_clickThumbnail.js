@@ -8,9 +8,9 @@ function onclickImg(index){
 
 }
 function onclickPlaylist(vid){
-  console.log("addassda");
   nowPlayingVID=vid;
   player.loadVideoById(vid);
+  addRank(vid);
   document.getElementById("btn-img").src="/images/play.png"; a=1;
   setTimeout(function(){
       document.getElementById("btn-img").src="/images/pause.png"; a=0;

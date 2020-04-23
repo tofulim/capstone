@@ -34,18 +34,20 @@ function onclickPS() {
         document.getElementById("btn-img").src="/images/pause.png"; a=0;
     },100);
     nowPlayingVID= currNode.prev2.data.VID;
+    addRank(nowPlayingVID);
   }
   // player.loadPlaylist([currNode.data.VID,'dKnQcp9yjJI'],0,0);
 }
 function onclickNS() {
   var currNode=findNodebyVID();
-  if(currNode.prev2.next.VID!=null){
+  if(currNode.next.data.VID!=null){
     player.loadVideoById(currNode.next.data.VID);
     document.getElementById("btn-img").src="/images/play.png"; a=1;
     setTimeout(function(){
         document.getElementById("btn-img").src="/images/pause.png"; a=0;
     },100);
     nowPlayingVID= currNode.next.data.VID;
+    addRank(nowPlayingVID);
     // player.loadPlaylist([currNode.next.next.data.VID],0,0);
   }
 }
