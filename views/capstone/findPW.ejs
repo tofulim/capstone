@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>비밀번호 찾기 페이지</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/javascripts/popup.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/local.css">
+</head>
+<body>
+
+  <center><h2>비밀번호 찾기</h2></center>
+  <div id="findPWDiv">
+    <form name="findPWForm" action="/auth/findPW" method="post">
+      <input type="text" id="findPWName" name="findPWName" placeholder="가입하신 이름을 입력해주세요."><br><br>
+      <input type="text" id="findPWEmail" name="findPWEmail" placeholder="비밀번호를 찾으실 계정을 입력해주세요."><br><br>
+      <input type="submit" id="findPWSubmit" name="findPWSubmit" value="SSS 계정 비밀번호 찾기"><br><br>
+      <img id="findIDImg" src="/images/SSS.jpg">
+    </form>
+  </div>
+
+</body>
+</html>

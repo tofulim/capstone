@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/searchResultPage.css">
+  <script src="/javascripts/sRP_confirm.js"></script>
+  <script src="/javascripts/searchShow.js"></script>
+  <script src="/javascripts/sRP_clickThumbnail.js"></script>
+
+</head>
+<body>
+  <div id="showWord">
+    <script>show_word()</script>
+  </div>
+  <div id="searchPagediv"></div>
+  <script>
+    if(history.state.data="search"){ //뒤로가기 눌렸을 때
+      onpopstate = function(event) {
+      reloadMain(); //메인의 2,3번 새로고침 해줌
+     }
+    }
+    var resultNum=optionParams.maxResults;
+    var searchResultHTML="";
+    var confirmedData=sRP_confirm(searchDataSend);
+    for(var index in confirmedData){
+      searchResultHTML+=`<div class="sRP_${index}" style="border-radius:10px; border-bottom:1px solid white; background-color:#eceff6"><img src="${confirmedData[index].thumbNail.default.url}" style="width:60px; height:60px; border-radius:8px; float:left;" onclick="onclickImg(${index})"><button style="float:left; margin-top:15px; margin:20px;" onclick="onclickAddBtn(${index})">담기</button><span style="display:block; margin-top:15px;">${confirmedData[index].artist}</span>`;
+      if(confirmedData[index].official_flag==1) {
+        searchResultHTML+=`<img src="/images/check.png" style="width:13px; height:13px; display:block; float:right; margin-right:15px; margin-top:-10px;"></span><span style="display:block;">${confirmedData[index].title}</span></div>`;
+      }
+      else {
+        searchResultHTML+=`</span><span style="display:block;">${confirmedData[index].title}</span> </div>`;
+      }
+    }
+    document.getElementById("searchPagediv").innerHTML=searchResultHTML;
+
+  </script>
+
+</body>
+</html>

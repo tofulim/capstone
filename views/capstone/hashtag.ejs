@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/javascripts/searchShow.js"></script>
+  <meta charset="utf-8">
+  <title>
+
+  </title>
+</head>
+<body>
+  <div id="showWord">
+    <script>show_word()</script>
+  </div>
+
+  <div class="SNS" style="text-align: center;">
+    <script>
+    var boards = "<%= JSON.stringify(boards) %>";
+    var hashtags = "<%= JSON.stringify(hashtags) %>";
+
+    boards = boards.replace(/&#34;/gi,'\"');
+    boards = boards.replace(/\\/gi,'\\\\');
+    boards = boards.replace(/&lt;/gi, '');
+    boards = boards.replace(/&gt;/gi, '');
+    boards = boards.replace(/br/gi, '\\n');
+    boards = boards.replace(/\\n/gi, '<br>');
+    boards = boards.replace(/uploads\\<br>/gi, 'uploads\\\\n');
+    boards = JSON.parse(boards);
+
+    hashtags = hashtags.replace(/&#34;/gi,'\"');
+    hashtags = JSON.parse(hashtags);
+
+    </script>
+    <% for(var i in boards) { %>
+      <div>
+        <span style="background-color: white; width: 90%; font-size:16px; border:1px solid gray; border-radius: 10px; display: inline-block;">
+          <span>
+            <img src="<%= boards[i].img %>" width="300" height="250" />
+          </span>
+          <div id="boardText">
+            <%- boards[i].text %>
+          </div>
+          <p style="color:blue; font-size:13px;">
+            <% for(var j in hashtags) { %>
+              <% if(boards[i].id == hashtags[j].boardId) {%>
+                #<%= hashtags[j].text %> &nbsp;
+                <% } %>
+                <% } %>
+          </p>
+          <div id="hashtagsong">
+            <script>
+            var boards = "<%= JSON.stringify(boards) %>";
+            var boardsonglist = "<%= JSON.stringify(boardsonglist) %>";
+
+            boardsonglist = boardsonglist.replace(/&#34;/gi,'\"');
+            boardsonglist = JSON.parse(boardsonglist);
+
+            boards = boards.replace(/&#34;/gi,'\"');
+            boards = boards.replace(/\\/gi,'\\\\');
+            boards = boards.replace(/&lt;/gi, '');
+            boards = boards.replace(/&gt;/gi, '');
+            boards = boards.replace(/br/gi, '\\n');
+            boards = boards.replace(/\\n/gi, '<br>');
+            boards = boards.replace(/uploads\\<br>/gi, 'uploads\\\\n');
+            boards = JSON.parse(boards);
+
+            hashtaginit(boards, boardsonglist);
+            </script>
+          </div>
+            </span>
+      </div>
+      <br>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="http://www.youtube.com/player_api"></script>
+  <script src="/javascripts/search.js"></script>
+  <script src="/javascripts/logoutNfriends.js"></script>
+  <script src="/javascripts/reload.js"></script>
+  <script src="/javascripts/mypage.js"></script>
+  <script src="/javascripts/playlist_LinkedList.js"></script>
+  <script src="/javascripts/sRP_AddnRemoveBtn.js"></script>
+  <script src="/javascripts/playlistDisplay.js"></script>
+  <script src="/javascripts/sRP_clickThumbnail.js"></script>
+  <script src="/javascripts/init.js"></script>
+  <script src="/javascripts/mPopup.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    *:focus { outline:none; }
+  </style>
+  <title>main</title>
+</head>
+  <body>
+    <script src="/javascripts/youtubeplayer.js"></script>
+    <div class="parent">
+      <div id="reloadSection">
+        <div class="topSection">
+          <div class="mainBar">
+            <button id="mainBtn" type="button" onclick="reloadMain()"><img id="mainbtn-img" src="/images/SSS.jpg"></button>
+          </div>
+          &nbsp;&nbsp;&nbsp;
+          <div class="searchBar"> <!--검색버튼과 입력창-->
+            <br>
+            <div class="centerSearchDiv">
+              <div id="searchNselectDiv">
+                <select name="search" id="sel_search" >
+                  <option value="normal" selected="selected">Artist & Title</option>
+                  <option value="mood">Mood Search</option>
+                  <option value="hashtag">Hashtag</option>
+                  <option value="user">User</option>
+                </select>
+                <input id="inputText" type="text" onkeyup="enter()"></input>
+              </div>
+              <div id="searchBtnDiv">
+                <button id="searchBtn" type="button" onclick="onclickSearch()">검색</button>
+              </div>
+            </div>
+          </div>
+          &nbsp;&nbsp;&nbsp;
+          <div class="logoutBar">
+            <div class="_3btn">
+              <div class="mb"><button id="myPageBtn" onclick="onclickMyPage()">마이 페이지</button></div>
+              <div class="fb"><button id="friendsBtn" onclick="friends()">친구</button></div>
+              <div class="lb"><button id="logoutBtn" onclick="logout()">로그아웃</button></div>
+            </div>
+            <br>
+            <div class="welcome">
+              <div id="userName"><%=usernick%>님 안녕하세요. <br> SSS에 오신 걸 환영합니다! </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="_3cover">
+          <div id="Playlist" ></div>
+          &nbsp;&nbsp;&nbsp;
+          <div id="searchResultPage"> <!--검색버튼 클릭 시 2,3번을 검색 결과로 전환해주는 div-->
+            <div id="SNS"></div>
+            <!-- 여기서 모든 3cover에 대한 업데이트 및 초기화 init 함수를 실행함 -->
+            &nbsp;&nbsp;&nbsp;
+            <div id="Ranking">
+              <script>
+              var listss = "<%= JSON.stringify(list) %>";
+              var ranking = "<%= JSON.stringify(ranking) %>";
+              var boards = "<%= JSON.stringify(boards) %>";
+              var hashtags = "<%= JSON.stringify(hashtags) %>";
+              var user = "<%= JSON.stringify(user) %>";
+              var boardsonglist = "<%= JSON.stringify(boardsonglist) %>";
+              boardsonglist = boardsonglist.replace(/&#34;/gi,'\"');
+              boardsonglist = JSON.parse(boardsonglist);
+
+              ranking = ranking.replace(/&#34;/gi,'\"');
+              ranking = JSON.parse(ranking);
+
+              boards = boards.replace(/&#34;/gi,'\"');
+              boards = boards.replace(/\\/gi,'\\\\');
+              boards = boards.replace(/&lt;/gi, '');
+              boards = boards.replace(/&gt;/gi, '');
+              boards = boards.replace(/br/gi, '\\n');
+              boards = boards.replace(/\\n/gi, '<br>');
+              boards = boards.replace(/uploads\\<br>/gi, 'uploads\\\\n');
+              boards = JSON.parse(boards);
+
+              listss = listss.replace(/&#34;/gi,'\"');
+              listss = JSON.parse(listss);
+
+              hashtags = hashtags.replace(/&#34;/gi,'\"');
+              hashtags = hashtags.replace(/\\/gi,'\\\\');
+              hashtags = hashtags.replace(/\#/gi,'\\#');
+              hashtags = JSON.parse(hashtags);
+
+              user = user.replace(/&#34;/gi,'\"');
+              user = JSON.parse(user);
+
+              init(listss, <%= listnum %>, ranking, boards, hashtags, user, boardsonglist);
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="MusicPlayer" style="background-color: #292c33">
+        <marquee id="nowPlayingSong">현재 재생중인 음악 -  </marquee>
+        <div class="btn3">
+          <button id="psBtn" type="button" onclick="onclickPS()"><img id="psbtn-img" src="/images/pb.png"></button>
+          <button id="ppBtn" type="button" onclick="onclickPP()"><img id="btn-img" src="/images/play.png"></button>
+          <button id="nsBtnBtn" type="button" onclick="onclickNS()"><img id="nsbtn-img" src="/images/pp.png"></button>
+        </div>
+        <div id="player" style="width:0%; height:0%" >
+          <iframe width="0" height="0" src="https://www.youtube.com/embed/pQV0WEdT_OE" controls="2" frameborder="0" rel="0" fs="0" controls=0 disablekb="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  </html>

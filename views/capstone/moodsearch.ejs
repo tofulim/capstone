@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/javascripts/searchShow.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"> -->
+  <title>
+    MoodSearch
+  </title>
+</head>
+<body>
+  <div id="showWord">
+    <script>show_word()</script>
+  </div>
+  <div class="SNS" style="text-align:center;">
+    <script>
+    var printMS="";
+    var mslist = "<%= JSON.stringify(mslist) %>";
+    mslist = mslist.replace(/&#34;/gi,'\"');
+    mslist = JSON.parse(mslist);
+    var mstaglist="<%- mstaglist %>";
+    // console.log(mstaglist);
+    mstaglist = JSON.stringify(mstaglist);
+    mstaglist = mstaglist.replace('"', "");
+    mstaglist = mstaglist.replace(/[A-Z]/g, "");
+    mstaglist = mstaglist.replace(/\/\//gi, "");
+    var mstaglist=mstaglist.split('/n/');
+    for(var i in mslist){
+      var song=mslist[i];
+      var toptag=mstaglist[i].split(' ');
+      msArr.push(mslist[i]);
+      if(song.title.indexOf('&amp;#39;')>-1){
+        song.title=song.title.replace('&amp;#39;','\'');
+      }
+      printMS+=`<div class="ranklist" style="background-color:#eceff6; height:60px;" onclick="onclickRanklist(\'${song.vid}\')"><img src="${song.thumbNail}" style="border-radius:8px; width:60px; height:60px; float:left;" > <span style="display:block; position:relative; top:10%;">${song.artist}</span><span style="display:block; position:relative; top:20%;">${song.title}</span><div onclick="event.cancelBubble=true;"><button style="position : relative; bottom :19px; right : 380px; " onclick="onclickRankAddBtn(${i},2)" >담기</button></div><span style="display:block; float:right; margin-top:-38px; margin-right:20px;"> ${mstaglist[i]}</span></div>`;
+    }
+    document.querySelector(".SNS").innerHTML=printMS;
+    </script>
+    </body>
+    </html>

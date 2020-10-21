@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    새 게시물 작성
+  </title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/create.css">
+  <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script src="/javascripts/popup.js"></script>
+  <script>
+  $(function(){
+    $("#imgFile").on('change', function(){
+      readURL(this);
+    });
+  });
+
+  function readURL(input){
+    if (input.files && input.files[0]){
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#Image').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <form name="popup" action="/creates/board" method="post" enctype="multipart/form-data" onsubmit="return false">
+    <p>
+      <input type="file" id="imgFile" name="imgFile" accept="image/*">
+      <p id="img"> <!--사진 미리보기창 가운데정렬-->
+        <img id="Image" src="#">
+      </p>
+      <p id="textarea">
+        <textarea id="description" name="description" rows="5" cols="60" placeholder="내용을 입력해주세요."></textarea>
+      </p>
+      <p id="TagSelection">
+        <input type="text" id="tags" name="tags" placeholder="태그 입력" style="text-transform: lowercase;">
+      </p>
+      <p id="SongSelection">
+        <select name="selectSong" id="selectSong">
+          <option value="none">노래를 선택해주세요.</option>
+          <% for(var i in playlists) { %>
+            <option value="<%= playlists[i].vid %>"><%= playlists[i].title %> - <%= playlists[i].artist %></option>
+          <% } %>
+        </select>
+      </p>
+    </p>
+    <br><br>
+    <div>
+      <center>
+        <input type="submit" id="newBtn"value="게시" onclick="check()">
+      </center>
+    </div>
+  </form>
+</body>
+</html>

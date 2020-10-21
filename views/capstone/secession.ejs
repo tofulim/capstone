@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>회원 탈퇴</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/local.css">
+</head>
+<body>
+<div id="secessionDiv">
+  <center><h2><%= user.nickname %>님 정말로 SSS 계정을 탈퇴하시겠습니까 ?</h2></center>
+  <form name="secessionForm" action="/users/secession" method="post">
+    <input type="submit" id="YesBtn" name="YesBtn" value="예, 탈퇴하겠습니다.">
+  </form>
+  <button type="button" id="NoBtn" name="NoBtn" onclick="location.href='/main'">아뇨, 탈퇴하지 않겠습니다.</button>
+</div>
+</body>
+</html>

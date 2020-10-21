@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>비밀번호 수정 페이지</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/javascripts/popup.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/local.css">
+</head>
+<body>
+
+  <center><h2>비밀번호 수정</h2></center>
+  <div id="updatePWDiv">
+    <form name="updatePWForm" action="/auth/updatePW" method="post" onsubmit="return false">
+      <input type="password" id="updatePW" name="updatePW" placeholder="새 비밀번호를 입력해주세요."><br><br>
+      <input type="password" id="updatePWConfirm" name="updatePWConfirm" placeholder="새 비밀번호 확인."><br><br>
+      <input type="hidden" id="updatePWEmail" name="updatePWEmail" value="<%= user %>">
+      <input type="submit" id="updatePWSubmit" name="updatePWSubmit" value="확인" onclick="updatePWCheck()"><br><br>
+      <img id="findIDImg" src="/images/SSS.jpg">
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/update.css">
+  <title>
+    게시글 수정 페이지
+  </title>
+  <script src="/javascripts/updatePage.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/create.css">
+</head>
+
+<body>
+  <div class="SNS">
+    <div>
+      <center><h2>사진은 수정할 수 없습니다.</h2></center>
+      <form name="updatepopup" method="post">
+        <textarea id="description" name="description" rows="5" cols="60" placeholder="내용을 입력해주세요."><%= board[0].text %></textarea>
+        <input type="text" id="tags" name="tags" value="<%= re %>" placeholder="태그 입력" style="text-transform: lowercase;"/>
+        <input type="hidden" id="id" name="id" value="<%= id %>">
+        <button id="updateBtn" type="submit" onclick="updateSubmit(<%= id %>);" style="float: right; margin: 40px"/>수정
+      </form>
+    </div>
+  </div>
+</body>
+</html>

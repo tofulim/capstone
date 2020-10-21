@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>아이디 찾기 페이지</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/javascripts/popup.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/local.css">
+</head>
+<body>
+
+  <center><h2>계정 찾기</h2></center>
+  <div id="findIDDiv">
+    <form name="findIDForm" action="/auth/findID" method="post">
+      <input type="text" id="findIDName" name="findIDName" placeholder="가입하신 이름을 입력해주세요.">
+      <br>
+      <br>
+      <input type="submit" id="findIDSubmit" name="findIDSubmit" value="SSS 계정 찾기">
+      <br>
+      <br>
+      <img id="findIDImg" src="/images/SSS.jpg">
+    </form>
+  </div>
+
+</body>
+</html>

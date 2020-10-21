@@ -1,0 +1,36 @@
+<div id="SNS"></div>
+&nbsp;&nbsp;&nbsp;
+<div id="Ranking"  style="background-color: white; ">
+  <script>
+    var ranking = "<%= JSON.stringify(ranking) %>";
+    var boards = "<%= JSON.stringify(boards) %>";
+    var hashtags = "<%= JSON.stringify(hashtags) %>";
+    var user = "<%= JSON.stringify(user) %>";
+    var boardsonglist = "<%= JSON.stringify(boardsonglist) %>";
+
+    boardsonglist = boardsonglist.replace(/&#34;/gi,'\"');
+    boardsonglist = JSON.parse(boardsonglist);
+
+    ranking = ranking.replace(/&#34;/gi,'\"');
+    ranking = JSON.parse(ranking);
+
+    boards = boards.replace(/&#34;/gi,'\"');
+    boards = boards.replace(/\\/gi,'\\\\');
+    boards = boards.replace(/&lt;/gi, '');
+    boards = boards.replace(/&gt;/gi, '');
+    boards = boards.replace(/br/gi, '\\n');
+    boards = boards.replace(/\\n/gi, '<br>');
+    boards = boards.replace(/uploads\\<br>/gi, 'uploads\\\\n');
+    boards = JSON.parse(boards);
+
+    hashtags = hashtags.replace(/&#34;/gi,'\"');
+    hashtags = hashtags.replace(/\\/gi,'\\\\');
+    hashtags = hashtags.replace(/\#/gi,'\\#');
+    hashtags = JSON.parse(hashtags);
+
+    user = user.replace(/&#34;/gi, '\"');
+    user = JSON.parse(user);
+
+    init(-1, -1, ranking, boards, hashtags, user, boardsonglist);
+  </script>
+</div>

@@ -1,0 +1,43 @@
+<br>
+<% for(var i in boards) { %>
+  <div>
+    <span id="myBoard" style="background-color: white; width:99.6%; font-size:16px; border:1px solid gray; border-radius: 10px; display: inline-block;">
+      <h4 style="text-align: left; margin-left: 30px; border-bottom: 1px dashed gray; margin-right: 30px; margin-bottom:10px;"><%usrname%></h4>
+      <span>
+        <img src="<%= boards[i].img %>" width="300" height="250" />
+      </span>
+      <div id="boardText">
+        <%- boards[i].text %>
+      </div>
+      <p style="color:blue; font-size:13px;">
+        <% for(var j in hashtags) { %>
+          <% if(boards[i].id == hashtags[j].boardId) { %>
+            #<%= hashtags[j].text %> &nbsp;
+          <% } %>
+        <% } %>
+
+      </p>
+      <div id="myboardsong">
+        <script>
+        var boards = "<%= JSON.stringify(boards) %>";
+        var boardsonglist = "<%= JSON.stringify(boardsonglist) %>";
+
+        boardsonglist = boardsonglist.replace(/&#34;/gi,'\"');
+        boardsonglist = JSON.parse(boardsonglist);
+
+        boards = boards.replace(/&#34;/gi,'\"');
+        boards = boards.replace(/\\/gi,'\\\\');
+        boards = boards.replace(/&lt;/gi, '');
+        boards = boards.replace(/&gt;/gi, '');
+        boards = boards.replace(/br/gi, '\\n');
+        boards = boards.replace(/\\n/gi, '<br>');
+        boards = boards.replace(/uploads\\<br>/gi, 'uploads\\\\n');
+        boards = JSON.parse(boards);
+
+        myinit(boards, boardsonglist);
+        </script>
+      </div>
+      </span>
+    </div>
+    <br>
+  <% } %>

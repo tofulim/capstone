@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/javascripts/searchShow.js"></script>
+  <title>
+    UserSearch
+  </title>
+</head>
+<body>
+  <div id="showWord">
+    <script>show_word()</script>
+  </div>
+  <div class="SNS" style="text-align:center;">
+    <script>
+      var user = "<%= JSON.stringify(user) %>"; //닉네임
+      var userId = "<%= JSON.stringify(userId) %>"; //id
+      var printUS = "";
+
+      user = user.replace(/&#34;/gi,'\"');
+      user = JSON.parse(user);
+      userId = userId.replace(/&#34;/gi,'\"');
+      userId = JSON.parse(userId);
+
+      for(var i in user) {
+        var pic; //서버에 사진요청 or 개돼지
+        var msg; //친구인지 확인
+        $.ajax({
+          type: "POST",
+          url: "/followcheck",
+          data: {id : userId[i]},
+          async:false,
+          success: function(data){
+            if(data!="no") msg="팔로우 취소";
+            else msg="팔로우";
+          }
+        });
+        if(i%3==0) pic="/images/pig.png";
+        else if(i%3==1) pic="/images/dog.png";
+        else if(i%3==2) pic="/images/rat.png";
+
+        printUS += `<div class="userlist" style="background-color:#eceff6; height:60px; border-bottom:solid 1px white; border-radius:10px;"><img src=${pic}
+        style="border-radius:8px; width:60px; height:60px; float:left;" > <span style="position: relative; top: 35%; display:block;">${user[i]}
+        <button id="${userId[i]}" style="float:right; position:relative; right:3%;" onclick="onclickfollowBtn(${userId[i]})" name="uf">${msg}</button></span></div>`;
+      }
+      document.querySelector(".SNS").innerHTML=printUS;
+    </script>
+    </body>
+    </html>

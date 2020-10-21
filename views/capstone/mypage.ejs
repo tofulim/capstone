@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="/javascripts/updatePage.js"></script>
+  <script src="/javascripts/mypage.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/mypage.css">
+</head>
+
+<body>
+  <div class="SNS" style="text-align: center;">
+    <div style="height:30px;">
+      <form class="changeNameForm" id="changeNameForm" action="/users" method="post" style="float:left; position:relative; left:2%;">
+        <div>
+          <span style="color:darkblue;">NickName</span> : <input type="text" name="changeName" id="changeName" value="<%= user.nickname %>" style="width: 40%; height:25px; border-radius:8px; border:solid 1px gray;">
+          <input type="submit" id="changeNameButton" name="changeNameButton" value="확인" style="width:20%; font-size:13px;">
+        </div>
+      </form>
+      <button type="button" id="secessionBtn" name="secessionBtn" onclick="location.href='/users/secession'" style="float:right; position:relative; right:2%;">회원 탈퇴</button>
+    </div>
+    <br>
+    <% for(var i in boards) { %>
+      <div>
+        <span id="myBoard" style="background-color: white; width:99.6%; font-size:16px; border:1px solid gray; border-radius: 10px; display: inline-block;">
+          <span>
+            <img src="<%= boards[i].img %>" width="300" height="250" />
+          </span>
+          <div id="boardText">
+            <%- boards[i].text %>
+          </div>
+          <p style="color:blue; font-size:13px;">
+            <% for(var j in hashtags) { %>
+              <% if(boards[i].id == hashtags[j].boardId) { %>
+                #<%= hashtags[j].text %> &nbsp;
+                <% } %>
+                <% } %>
+
+              </p>
+              <div id="myboardsong">
+                <script>
+                var boards = "<%= JSON.stringify(boards) %>";
+                var boardsonglist = "<%= JSON.stringify(boardsonglist) %>";
+
+                boardsonglist = boardsonglist.replace(/&#34;/gi,'\"');
+                boardsonglist = JSON.parse(boardsonglist);
+
+                boards = boards.replace(/&#34;/gi,'\"');
+                boards = boards.replace(/\\/gi,'\\\\');
+                boards = boards.replace(/&lt;/gi, '');
+                boards = boards.replace(/&gt;/gi, '');
+                boards = boards.replace(/br/gi, '\\n');
+                boards = boards.replace(/\\n/gi, '<br>');
+                boards = boards.replace(/uploads\\<br>/gi, 'uploads\\\\n');
+                boards = JSON.parse(boards);
+
+                myinit(boards, boardsonglist);
+                </script>
+              </div>
+              <div>
+                <button type="button" id="updateBtn" name="updateBtn" onclick="window.open('users/update/<%= boards[i].id %>', 'window', 'width=500, height=300, top=80, left=550')" style="float:left; position:relative; left:34%;">게시물 수정</button>
+                <form action="/users/delete/<%= boards[i].id %>?_method=DELETE" method="post" onsubmit="return confirm('이 게시물을 삭제하시겠습니까?' );">
+                  <input type="hidden" name="_method" value="DELETE" >
+                  <input type="submit" id="deleteBtn" name="deleteBtn" value="게시물 삭제" style="float:right; position:relative; right:34%;" >
+                </form>
+              </div>
+              <br><br>
+            </span>
+          </div>
+          <br>
+          <% } %>
+
+        </div>
+      </body>
+      </html>
