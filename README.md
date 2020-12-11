@@ -22,9 +22,10 @@
    기본적으로 화면의 전환에 노래가 멈추면 안되기 때문에 SPA의 구성을 취함(window.history 객체 이용) 
    <img width="935" alt="메인2" src="https://user-images.githubusercontent.com/52443401/101862699-38ebdb80-3bb6-11eb-90f2-61b66f997464.png">
    
-   #### 친구 목록
+   #### 친구 목록 & 랭킹
    카카오로 로그인한 친구들과 일반 사용자 친구들의 목록
    ![친구](https://user-images.githubusercontent.com/52443401/101861737-27093900-3bb4-11eb-8360-100c15013903.JPG)
+   ![랭킹](https://user-images.githubusercontent.com/52443401/101861764-35efeb80-3bb4-11eb-94d0-6f3bd4669592.JPG)
    
    #### 검색1 : 해시태그 검색
    ![hash](https://user-images.githubusercontent.com/52443401/101861750-2ffa0a80-3bb4-11eb-8c6c-47b5a5732020.JPG)
@@ -32,7 +33,7 @@
    #### 검색2 : 분위기 검색
    형태소 분석기 KoalanLp를 이용하여 게시글과 함께 올린 노래들에서 추출한 형태소들의 조합이 가장 잘 맞는 노래를 추천해줌
    옆에 해당 근거도 같이 보여줌
-   ![랭킹](https://user-images.githubusercontent.com/52443401/101861764-35efeb80-3bb4-11eb-94d0-6f3bd4669592.JPG)
+   <img width="463" alt="moodsearch" src="https://user-images.githubusercontent.com/52443401/101861811-515af680-3bb4-11eb-86b6-8227d2d7913b.png">
    
    #### 검색3 : 아티스트 & 제목 검색
    가장 기본적인 검색으로 아티스트 혹은 제목으로 검색할 수 있음
