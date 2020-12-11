@@ -2,6 +2,7 @@
 
 ## Project명 :  SSS(Social Streaming Service)
 - 음악 스트리밍 서비스들의 통합과 추천 시스템의 향상을 위한 웹 애플리케이션
+- 음악 스트리밍 서비스 + SNS 의 결합으로 추천에 대한 근거를 SNS 게시글들로 수집
 
 ### 사용한 기술 정보
    #### 프론트 
@@ -33,6 +34,7 @@
    #### 검색2 : 분위기 검색
    형태소 분석기 KoalanLp를 이용하여 게시글과 함께 올린 노래들에서 추출한 형태소들의 조합이 가장 잘 맞는 노래를 추천해줌
    옆에 해당 근거도 같이 보여줌
+   
    <img width="463" alt="moodsearch" src="https://user-images.githubusercontent.com/52443401/101861811-515af680-3bb4-11eb-86b6-8227d2d7913b.png">
    
    #### 검색3 : 아티스트 & 제목 검색
