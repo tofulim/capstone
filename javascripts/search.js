@@ -28,7 +28,7 @@ function onclickSearch(){ //검색창에 입력한 값으로 2,3번에 새 html�
       optionParams={
         q: `${input}+audio`,
         part:"snippet",
-        key:"AIzaSyBHL4BgbHvV7pb3fiYhruUn9zxqET2Yclo",
+        key:key,
         type:"video",
         maxResults:10
       };
